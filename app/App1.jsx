@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function App1() {
     const questions = [
@@ -25,6 +26,7 @@ export default function App1() {
     const [question, setQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
+    const router = useRouter();
 
     const handleOptionClick = (option) => {
         if (option === questions[question].answer){
@@ -37,13 +39,13 @@ export default function App1() {
             setShowScore(true);
         }
     }
-};
 
     return (
         <View style={styles.container}>
             {showScore ? (
                 <Text style={styles.scoreText}>Your Score: {score} out of {questions.length}</Text>
             ) : ( 
+                <>
                     <Text style={styles.questionText}>{questions[question].questions}</Text>
                     {questions[question].options.map((option) => (
                         <TouchableOpacity 
@@ -54,6 +56,46 @@ export default function App1() {
                             <Text style={styles.optionText}>{option}</Text>
                         </TouchableOpacity>
                     ))}
+                </>
             )}
+            <TouchableOpacity style={styles.Button} onPress={()=> router.push("/App2")}><Text>Next Page</Text></TouchableOpacity>
         </View>
     )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: '#95cbd8ff',
+    },
+    questionText: {
+        fontSize: 24,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    optionButton: {
+        backgroundColor: '#4a90e2',
+        padding: 15,
+        marginVertical: 10,
+        borderRadius: 10,
+        width: '100%',
+        alignItems: 'center',
+    },
+    optionText: {
+        color: '#fff',
+        fontSize: 18,
+    },
+    scoreText: {
+        fontSize: 28,
+        fontWeight: 'bold',
+    },
+    Button: {
+        padding: 10,
+        backgroundColor: '#f0ad4e',
+        borderRadius: 5,
+        marginTop: 20,
+    }
+})
