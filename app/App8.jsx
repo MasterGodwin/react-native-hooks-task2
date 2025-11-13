@@ -65,7 +65,7 @@ export default function CurrencyConverter() {
       </Text>
 
       <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App7")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App9")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App9")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
     </View>
   );
 }

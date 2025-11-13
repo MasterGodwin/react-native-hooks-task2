@@ -4,98 +4,106 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-export default function App1() {
-    const questions = [
-        {
-            questions: "Which animal is Indian National Animal?",
-            options: ["Lion", "Tiger", "Elephant", "Bear"],
-            answer: "Tiger"
-        },
-        {
-            questions: "20+20=?",
-            options: ["30", "40", "50", "60"],
-            answer: "40"
-        },
-        {
-            questions: "How many states are there in India?",
-            options: ["28", "29", "30", "31"],
-            answer: "28"
-        }
-    ]
+const questions = [
+  {
+    question: 'What is the capital of France?',
+    options: ['London', 'Berlin', 'Paris', 'Madrid'],
+    correctAnswer: 'Paris',
+  },
+  {
+    question: 'What is 5 + 3?',
+    options: ['5', '8', '10', '7'],
+    correctAnswer: '8',
+  },
+  {
+    question: 'Which planet is known as the Red Planet?',
+    options: ['Earth', 'Mars', 'Jupiter', 'Venus'],
+    correctAnswer: 'Mars',
+  },
+];
 
-    const [question, setQuestion] = useState(0);
-    const [score, setScore] = useState(0);
-    const [showScore, setShowScore] = useState(false);
-    const router = useRouter();
+export default function App() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
+  const [showScore, setShowScore] = useState(false);
+  const router = useRouter();
 
-    const handleOptionClick = (option) => {
-        if (option === questions[question].answer){
-            setScore(score + 1);
-        }
-        
-        if (question + 1 < questions.length){
-            setQuestion(question + 1);
-        } else {
-            setShowScore(true);
-        }
+  const handleAnswer = (selectedOption) => {
+    if (selectedOption === questions[currentQuestion].correctAnswer) {
+      setScore(score + 1);
     }
 
-    return (
-        <View style={styles.container}>
-            {showScore ? (
-                <Text style={styles.scoreText}>Your Score: {score} out of {questions.length}</Text>
-            ) : ( 
-                <>
-                    <Text style={styles.questionText}>{questions[question].questions}</Text>
-                    {questions[question].options.map((option) => (
-                        <TouchableOpacity 
-                            key={option} 
-                            style={styles.optionButton} 
-                            onPress={() => handleOptionClick(option)}
-                        >
-                            <Text style={styles.optionText}>{option}</Text>
-                        </TouchableOpacity>
-                    ))}
-                </>
-            )}
-            <TouchableOpacity style={styles.Button} onPress={()=> router.push("/App2")}><Text>Next Page</Text></TouchableOpacity>
+    if (currentQuestion + 1 < questions.length) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowScore(true);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      {showScore ? (
+        <View style={styles.scoreContainer}>
+          <Text style={styles.scoreText}>Your Score: {score} / {questions.length}</Text>
         </View>
-    )
+      ) : (
+        <View style={styles.quizContainer}>
+          <Text style={styles.questionText}>{questions[currentQuestion].question}</Text>
+          {questions[currentQuestion].options.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.optionButton}
+              onPress={() => handleAnswer(option)}
+            >
+              <Text style={styles.optionText}>{option}</Text>
+            </TouchableOpacity>
+          ))}
+
+          <TouchableOpacity style={styles.Button} onPress={()=> router.push("/App2")}><Text>Next Page</Text></TouchableOpacity>
+        </View>
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-        backgroundColor: '#95cbd8ff',
-    },
-    questionText: {
-        fontSize: 24,
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    optionButton: {
-        backgroundColor: '#4a90e2',
-        padding: 15,
-        marginVertical: 10,
-        borderRadius: 10,
-        width: '100%',
-        alignItems: 'center',
-    },
-    optionText: {
-        color: '#fff',
-        fontSize: 18,
-    },
-    scoreText: {
-        fontSize: 28,
-        fontWeight: 'bold',
-    },
-    Button: {
+     container: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: 16,
+    backgroundColor: '#f5f5f5',
+  },
+  quizContainer: {
+    marginVertical: 20,
+  },
+  questionText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  optionButton: {
+    backgroundColor: '#4CAF50',
+    padding: 15,
+    borderRadius: 10,
+    marginVertical: 8,
+  },
+  optionText: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  scoreContainer: {
+    alignItems: 'center',
+  },
+  scoreText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  Button: {
         padding: 10,
         backgroundColor: '#f0ad4e',
         borderRadius: 5,
         marginTop: 20,
     }
-})
+});

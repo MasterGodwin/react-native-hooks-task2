@@ -15,6 +15,7 @@ export default function RootLayout() {
       <Stack.Screen name="App7" />
       <Stack.Screen name="App8" />
       <Stack.Screen name="App9" />
+      <Stack.Screen name="App10" />
     </Stack>
   );
 }
