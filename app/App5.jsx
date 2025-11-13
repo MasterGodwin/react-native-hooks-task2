@@ -4,33 +4,33 @@ import React, { useRef, useState } from 'react';
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
-
 export default function App5() {
-    const scrollViewRef = useRef(null);
+    const scrollViewRef = useRef();
     const [scrollPercent, setScrollPercent] = useState(0);
     const router = useRouter();
 
     const handleScroll = (event) => {
-        const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent;
-        const scrollPosition = contentOffset.y;
-        const totalHeight = contentSize.height - layoutMeasurement.height;
-        const scrolled = (scrollPosition / totalHeight) * 100;
-        setScrollPercent(scrolled > 100 ? 100 : scrolled);
+        const { contentOffset, contentSize, layoutMeasurement } = event.nativeEvent; 
+        const scrollPosition = contentOffset.y; // Current scroll position      
+        const totalHeight = contentSize.height - layoutMeasurement.height; // Total scrollable height
+        const scrolled = (scrollPosition / totalHeight) * 100; // Calculate scroll percentage
+        setScrollPercent(scrolled > 100 ? 100 : scrolled); // Update state with scroll percentage
     };
 
     return (
         <View style={styles.container}> 
             <View style={styles.progressBarContainer}>
                 <View style={[styles.progressBar, { width: `${scrollPercent}%` }]} />
+                
             </View>
-        
+                        <Text style={styles.title}>Scroll Progress Demo</Text>
+
             <ScrollView
                 ref={scrollViewRef}
                 style={styles.scrollView}
                 onScroll={handleScroll}
                 scrollEventThrottle={16}
             >
-                <Text style={styles.title}>Scroll Progress Demo</Text>
                 <Text style={styles.text}>
                 {Array(20)
                     .fill(
@@ -58,21 +58,35 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#c1e1c1',
+        // backgroundColor: '#c1e1c1',
     },
     progressBarContainer: {
+        top:0,
+        // bottom: 10,
+        width:'100%',
         height: 6,
-        backgroundColor: '#e0e0e0',
+        backgroundColor: '#000000ff',
+        zIndex:10,
     },
     progressBar: {
+        // top: 10,
         height: 6,
-        backgroundColor: '#4CAF50',
+        width:'100%',
+        backgroundColor: '#0008f2ff',
+                zIndex:10,
+
     },
     scrollView: {
-        flex: 1,
+        // flex: 1,
+        top:10,
+        height:100
+        ,maxHeight:400,
+
         padding: 20,
+        // bottom:-200,
     },
     title: {
+        top:10,
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
@@ -95,6 +109,7 @@ const styles = StyleSheet.create({
     buttons: {
         display: 'flex',
         flexDirection: 'row',
+        top:20,
         gap: 50,
     }
 })

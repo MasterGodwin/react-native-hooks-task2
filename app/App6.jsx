@@ -1,25 +1,24 @@
-import React, { useRef } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import  { useRef, useState } from "react";
+import { View, Text, Button, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function App() {
+  const [Count, setCount] = useState(0);
   const clickCount = useRef(0);      
   const router = useRouter();
 
   const handleClick = () => {
     clickCount.current =  clickCount.current + 1;
-    console.log("Button clicked:", clickCount.current, "times");       
+    console.log("Button clicked:", clickCount.current, "times"); 
+    setCount(Count + 1);      
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>
-      {clickCount.current}
+      {Count}
       </Text>
-
-      <TouchableOpacity style={styles.button} onPress={handleClick}>
-        <Text style={styles.btnText}>Click Me</Text>
-      </TouchableOpacity>
+      <Button title="Click Me" onPress={handleClick} />
 
       <View style={styles.Button2}>
                 <TouchableOpacity onPress={() => router.push("/App5")} style={styles.Button3}>

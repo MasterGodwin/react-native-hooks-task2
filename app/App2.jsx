@@ -5,15 +5,15 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function App2() {
-    const [fontSize, setFontSize] = useState();
+    const [fontSize, setFontSize] = useState(16);
     const router = useRouter();
 
     function increase() {
-        setFontSize((increaseSize) => (increaseSize ? increaseSize + 2 : 18));  
+        setFontSize((increaseSize) => (increaseSize  + 2));  
     }
 
     function decrease() {
-        setFontSize((decreaseSize) => (decreaseSize ? decreaseSize - 2 : 12));
+        setFontSize((decreaseSize) => (decreaseSize  - 2 ));
     }
 
     return (

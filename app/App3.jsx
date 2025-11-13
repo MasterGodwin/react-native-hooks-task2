@@ -13,11 +13,11 @@ export default function App3() {
         if(city) {
             fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=9738fee2400a8a7fc14a1b13f9db7d15&units=metric`)
             .then(response => response.json())
-            .then(data => {
-                if(data.main) {
-                    setTemperature(data.main.temp);
+            .then(data => { 
+                if(data.main) {  // check if data.main exists
+                    setTemperature(data.main.temp);//get temperature in celsius
                 } else {
-                    setTemperature(null);
+                    setTemperature(null); // No data found for the city
                 }
             })
             .catch(error => {

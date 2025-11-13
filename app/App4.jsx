@@ -8,20 +8,30 @@ export default function App4() {
     const [online, setOnline] = useState(true);
     const router = useRouter();
 
-    useEffect(() => {
-        const network = NetInfo.addEventListener((state) => {
-        setOnline(state.online);
-        });
+    const checkConnection = () => { 
+    NetInfo.fetch().then((state) => { // Fetch network state once
+      setOnline(state.isConnected); // Update online state
+    });
+  };    
+
+    useEffect(() => { 
+        checkConnection();
+
+        const network = NetInfo.addEventListener((state) => { // Listen for network state changes
+        setOnline(state.isConnected); // Update online state
+        }); 
 
         return () => network();
     }, []);
    
     return (
-        <View style={[styles.container, !online && {backgroundColor: '#ffcccb'}]}>
-            <Text style={styles.text}>
-                {online ? "You are Online" : "You are Offline"}
-            </Text>
-             
+        <View style={[styles.container, online ? { backgroundColor: '#e4d03bff' } : { backgroundColor: '#ffffffff' }]}>
+            {online ? (
+               <Text style={styles.onlineText}>You are Online</Text>
+            ) : (
+                <Text style={styles.offlineText}>You are Offline</Text>
+            )}
+                         
             <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App3")}> 
                 <Text style={styles.buttonText}>Back Page</Text> 
             </TouchableOpacity>
@@ -38,7 +48,7 @@ const styles = StyleSheet.create({
         justifiConent: 'center',
         alignItems: 'center',
         padding: 20,
-        backgroundColor: '#f7cac9ff',
+        // backgroundColor: '#f7cac9ff',
         paddingTop: 150,
     },
     offlineText: {

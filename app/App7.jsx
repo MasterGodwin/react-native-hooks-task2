@@ -1,18 +1,17 @@
 // Build a Prime Number Finder: take a number input and show all prime numbers up to that number, using useMemo to avoid recalculating when input is unchanged.
-
 import { useState , useMemo } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function App7() {
-    const [number, setNumber] = useState("");
-    const router = useRouter();
+    const [number, setNumber] = useState("10"); 
+    const router = useRouter(); 
 
     const primes = useMemo(() => {
-        const num = parseInt(number);
-        if (isNaN(num) || num < 2) return [];
+        const numm = parseInt(number);
+        if (isNaN(numm) || numm < 2) return [];
         const primeNumbers = [];
-        for (let i = 2; i <= num; i++) {
+        for (let i = 2; i <= numm; i++) {
             let isPrime = true;
             for (let j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j === 0) {
@@ -32,13 +31,17 @@ export default function App7() {
                 placeholder= "Enter a number"
                 keyboardType="numeric"
                 value={number}
-                onChangeText={setNumber}
+                onChangeText={setNumber}  
             />
             <Text style={styles.resultText}>
                 Prime Numbers: {primes.length > 0 ? primes.join(", ") : "None"}
             </Text>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App6")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App8")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App6")}> 
+                <Text style={styles.buttonText}>Back Page</Text> 
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App8")}> 
+                <Text style={styles.buttonText}>Next Page</Text> 
+            </TouchableOpacity>
         </View>
     );
 }

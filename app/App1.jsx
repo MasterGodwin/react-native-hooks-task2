@@ -1,10 +1,15 @@
 // Create a Quiz App that displays one question at a time. Each click on an answer should update the score using useState.
-
-import React, { useState } from 'react';
+import React from "react"; 
+import  { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
 
 const questions = [
+   {
+    question: 'Which planet is known as the Red Planet?',
+    options: ['Earth', 'Mars', 'Jupiter', 'Venus'],
+    correctAnswer: 'Mars',
+  },
   {
     question: 'What is the capital of France?',
     options: ['London', 'Berlin', 'Paris', 'Madrid'],
@@ -22,7 +27,7 @@ const questions = [
   },
 ];
 
-export default function App() {
+const App = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
@@ -107,3 +112,5 @@ const styles = StyleSheet.create({
         marginTop: 20,
     }
 });
+
+export default App;
