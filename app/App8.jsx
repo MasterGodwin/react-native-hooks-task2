@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useRouter } from "expo-router";
@@ -13,9 +13,9 @@ export default function CurrencyConverter() {
     console.log("Recalculating conversion rates...");
 
     const rates = {
-      USD: { INR: 83.5, EUR: 0.93, GBP: 0.78 },
-      INR: { USD: 0.012, EUR: 0.011, GBP: 0.0093 },
-      EUR: { USD: 1.07, INR: 90.1, GBP: 0.84 },
+      USD: { INR: 88.71, EUR: 103.02, GBP: 116.75 },
+      INR: { USD: 0.011, EUR: 0.0097, GBP: 0.0086 },
+      EUR: { USD: 1.16, INR: 103.03, GBP: 0.88 },
     };
 
     return rates[baseCurrency];
@@ -64,8 +64,12 @@ export default function CurrencyConverter() {
         {amount} {baseCurrency} = {convertedAmount} {targetCurrency}
       </Text>
 
-      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App7")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App9")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App7")}> 
+        <Text style={styles.buttonText}>Back Page</Text> 
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App9")}> 
+        <Text style={styles.buttonText}>Next Page</Text> 
+      </TouchableOpacity>
     </View>
   );
 }

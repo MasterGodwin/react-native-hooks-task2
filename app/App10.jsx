@@ -1,6 +1,6 @@
 // Create a Stopwatch App with Start, Stop, and Reset buttons. Use useCallback to memoize the control handlers so they don’t re-create on every render.
 
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 

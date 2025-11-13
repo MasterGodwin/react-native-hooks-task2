@@ -1,6 +1,6 @@
 //Build a Search Filter with Child Component — parent holds the list, child renders filtered results. Use useCallback for the filter handler to prevent re-renders of the child.
 
-import React, { useState, useCallback, memo } from "react";
+import { useState, useCallback, memo } from "react";
 import { View, Text, TextInput, FlatList, StyleSheet, TouchableOpacity} from "react-native";
 import { useRouter } from "expo-router";
 
@@ -60,8 +60,12 @@ export default function App8() {
  
       <FilteredList data={itemList} filterHandler={filterHandler} />
 
-      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App8")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-        <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App10")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App8")}> 
+        <Text style={styles.buttonText}>Back Page</Text> 
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App10")}> 
+        <Text style={styles.buttonText}>Next Page</Text> 
+      </TouchableOpacity>
     </View>
   );
 }
