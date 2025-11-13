@@ -3,23 +3,18 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function App() {
-  const clickCount = useRef(0);   
-  const textRef = useRef(null);    
+  const clickCount = useRef(0);      
   const router = useRouter();
 
   const handleClick = () => {
-    clickCount.current += 1;       
-    if (textRef.current) {
-      textRef.current.setNativeProps({
-        text: `Count: ${clickCount.current}`,
-      });
-    }
+    clickCount.current =  clickCount.current + 1;
+    console.log("Button clicked:", clickCount.current, "times");       
   };
 
   return (
     <View style={styles.container}>
-      <Text ref={textRef} style={styles.text}>
-        Count: 0
+      <Text style={styles.text}>
+      {clickCount.current}
       </Text>
 
       <TouchableOpacity style={styles.button} onPress={handleClick}>

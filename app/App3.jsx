@@ -43,8 +43,12 @@ export default function App3() {
                 onChangeText={setCity}
             />
             
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App2")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App4")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App2")}> 
+                <Text style={styles.buttonText}>Back Page</Text> 
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App4")}> 
+                <Text style={styles.buttonText}>Next Page</Text> 
+            </TouchableOpacity>
         </View>
     )
 }  

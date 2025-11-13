@@ -29,8 +29,12 @@ export default function App2() {
                 <Text style={styles.buttonText}>A-</Text>
             </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App1")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App3")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App1")}> 
+                <Text style={styles.buttonText}>Back Page</Text> 
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App3")}> 
+                <Text style={styles.buttonText}>Next Page</Text> 
+            </TouchableOpacity>
         </View>
     )
 }

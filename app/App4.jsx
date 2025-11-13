@@ -22,8 +22,12 @@ export default function App4() {
                 {online ? "You are Online" : "You are Offline"}
             </Text>
              
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App3")}> <Text style={styles.buttonText}>Back Page</Text> </TouchableOpacity>
-            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App5")}> <Text style={styles.buttonText}>Next Page</Text> </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App3")}> 
+                <Text style={styles.buttonText}>Back Page</Text> 
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.Button2} onPress={() => router.push("/App5")}> 
+                <Text style={styles.buttonText}>Next Page</Text> 
+            </TouchableOpacity>
         </View>
     )
 } 

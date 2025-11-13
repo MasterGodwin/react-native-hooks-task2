@@ -5,7 +5,7 @@ export default function RootLayout() {
   return (
     <Stack 
       screenOptions={{ headerShown: false }}
-      initialRouteName="App1"
+      initialRouteName="App6"
       > 
       <Stack.Screen name="App1" />
       <Stack.Screen name="App2" />
@@ -16,6 +16,7 @@ export default function RootLayout() {
       <Stack.Screen name="App8" />
       <Stack.Screen name="App9" />
       <Stack.Screen name="App10" />
+      <Stack.Screen name="App11" />
     </Stack>
   );
 }
