@@ -1,11 +1,11 @@
 // Create a Stopwatch App with Start, Stop, and Reset buttons. Use useCallback to memoize the control handlers so they don’t re-create on every render.
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 
 export default function StopwatchApp() {
-  const [time, setTime] = useState(0);     
+  const [time, setTime] = useState(5000);     
   const [isRunning, setIsRunning] = useState(false);
   const timerRef = useRef(null);          
   const router = useRouter();
@@ -27,24 +27,24 @@ export default function StopwatchApp() {
   }, [isRunning]);
  
   const handleReset = useCallback(() => {
-    clearInterval(timerRef.current);
+    clearInterval(timerRef.current); 
     setIsRunning(false);
     setTime(0);
   }, []); 
 
-  useEffect(() => {
-    return () => clearInterval(timerRef.current);
-  }, []);
  
   const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
+    const hovrs = Math.floor(seconds / 3600); 
+    const mins = Math.floor((seconds % 3600) / 60); 
     const secs = seconds % 60;
-    return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+    
+
+    return `${ String(hovrs).padStart(2, "0")}:${ String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>⏱ Stopwatch</Text>
+      <Text style={styles.title}>Stopwatch</Text>
       <Text style={styles.timer}>{formatTime(time)}</Text>
 
       <View style={styles.buttons}>
@@ -63,7 +63,7 @@ export default function StopwatchApp() {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => router.push("/App8")}
+        onPress={() => router.push("/App9")}
       >
         <Text style={styles.btnText}>Back</Text>
       </TouchableOpacity>

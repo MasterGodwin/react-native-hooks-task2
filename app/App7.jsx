@@ -11,11 +11,11 @@ export default function App7() {
         const numm = parseInt(number);
         if (isNaN(numm) || numm < 2) return [];
         const primeNumbers = [];
-        for (let i = 2; i <= numm; i++) {
-            let isPrime = true;
-            for (let j = 2; j <= Math.sqrt(i); j++) {
-                if (i % j === 0) {
-                    isPrime = false;
+        for (let i = 2; i <= numm; i++) { // check each number i
+            let isPrime = true; //check if i is prime
+            for (let j = 2; j <= Math.sqrt(i); j++) { // check divisibility
+                if (i % j === 0) { // not prime
+                    isPrime = false; // mark as not prime
                     break;
                 }
             }

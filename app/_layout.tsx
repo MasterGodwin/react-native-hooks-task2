@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <Stack 
       screenOptions={{ headerShown: false }}
-      initialRouteName="App8"
+      initialRouteName="App1"
       > 
       <Stack.Screen name="App1" />
       <Stack.Screen name="App2" />

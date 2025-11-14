@@ -19,10 +19,7 @@ export default function App5() {
 
     return (
         <View style={styles.container}> 
-            <View style={styles.progressBarContainer}>
-                <View style={[styles.progressBar, { width: `${scrollPercent}%` }]} />
-                
-            </View>
+           
                         <Text style={styles.title}>Scroll Progress Demo</Text>
 
             <ScrollView
@@ -39,8 +36,14 @@ export default function App5() {
                     .join('\n\n')}
                 </Text>
             </ScrollView>
+
+             <View style={styles.progressBarContainer}>
+                <View style={[styles.progressBar, { width: `${scrollPercent}%` }]} />
+                
+            </View>
         
             <View style={styles.buttons}>
+            
                 <Text style={styles.footerText} onPress={() => router.push('/App4')}>
                     Back Page
                 </Text>
@@ -48,6 +51,8 @@ export default function App5() {
                     Next Page
                 </Text>
             </View>
+
+            
         </View>
     );
 }
@@ -63,10 +68,11 @@ const styles = StyleSheet.create({
     progressBarContainer: {
         top:0,
         // bottom: 10,
-        width:'100%',
+        width:'88%',
         height: 6,
         backgroundColor: '#000000ff',
         zIndex:10,
+        marginTop:30,
     },
     progressBar: {
         // top: 10,

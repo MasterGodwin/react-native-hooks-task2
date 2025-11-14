@@ -1,5 +1,4 @@
-// Create a Quiz App that displays one question at a time. Each click on an answer should update the score using useState.
-import React from "react"; 
+// Create a Quiz App that displays one question at a time. Each click on an answer should update the score using useState. 
 import  { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';

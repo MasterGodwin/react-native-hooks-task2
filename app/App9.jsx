@@ -6,15 +6,14 @@ import { useRouter } from "expo-router";
 
 const FilteredList = memo(({ data, filterHandler }) => {
   const filteredData = filterHandler(data);
-  const router = useRouter();
+
 
   return (
     <FlatList
-      data={filteredData}
-      keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item }) => (
+      data={filteredData} 
+      renderItem={({ item }) => (  
         <View style={styles.itemContainer}>
-          <Text style={styles.itemText}>{item}</Text>
+          <Text style={styles.itemText}>{item}</Text> 
         </View>
       )}
     />

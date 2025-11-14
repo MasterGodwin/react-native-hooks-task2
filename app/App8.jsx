@@ -10,7 +10,6 @@ export default function CurrencyConverter() {
   const router = useRouter();
  
   const conversionRates = useMemo(() => {
-    console.log("Recalculating conversion rates...");
 
     const rates = {
       USD: { INR: 88.71, EUR: 103.02, GBP: 116.75 },
